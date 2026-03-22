@@ -6,7 +6,11 @@ const authRoutes = require('./routes/authRoutes.js')
 const cors = require("cors")
 
 const port = 5000;
-app.use(cors())
+app.use(cors(
+    {
+        origin: "*"
+    }
+))
 app.use(express.json())
 connectDB();
 
