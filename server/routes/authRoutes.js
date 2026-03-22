@@ -5,8 +5,8 @@ const { signup, login } = require('../controllers/userController.js')
 const User = require("../models/User")
 const Note = require("../models/Note")
 
-router.post("/auth/signup", signup)
-router.post("/auth/login", login)
+router.post("/signup", signup)
+router.post("/login", login)
 
 router.get("/profile", auth, async (req, res) => {
     try {
