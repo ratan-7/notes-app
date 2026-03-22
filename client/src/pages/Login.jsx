@@ -1,0 +1,83 @@
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import API from '../services/api'
+
+const Login = () => {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleLogin = async () => {
+        try {
+            const res = await API.post("/auth/login", { email, password })
+            localStorage.setItem("token", res.data.token)
+            window.location.href = "/"
+        } catch {
+            alert("Invalid credentials")
+        }
+    }
+
+    return (
+        <div className="min-h-screen flex">
+
+            {/* LEFT SIDE */}
+            <div className="hidden md:flex w-1/2 bg-black text-white flex-col justify-center items-center">
+                <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500">
+                    Notes AI
+                </h1>
+                <p className="text-gray-400 text-center px-10">
+                    Organize your thoughts, boost productivity, and build your future 🚀
+                </p>
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div className="flex w-full md:w-1/2 items-center justify-center bg-gray-900">
+
+                <div className="bg-gray-800 p-8 rounded-2xl shadow-2xl w-[350px] border border-gray-700">
+
+                    <h2 className="text-2xl font-bold text-white text-center mb-6">
+                        Login 🔐
+                    </h2>
+
+                    {/* Email */}
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        className="w-full mb-3 p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+
+                    {/* Password */}
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        className="w-full mb-4 p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    {/* Button */}
+                    <button
+                        onClick={handleLogin}
+                        className="w-full py-3 rounded-lg bg-gradient-to-r from-pink-500 to-blue-500 text-white font-semibold hover:opacity-90 transition"
+                    >
+                        Login
+                    </button>
+
+                    {/* Link */}
+                    <p className="text-sm text-center mt-4 text-gray-400">
+                        Don’t have an account?{" "}
+                        <Link to="/signup" className="text-pink-400 hover:underline">
+                            Signup
+                        </Link>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    )
+}
+
+export default Login
