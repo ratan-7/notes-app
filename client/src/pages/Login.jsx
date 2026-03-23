@@ -22,7 +22,7 @@ const Login = () => {
             {/* LEFT SIDE */}
             <div className="hidden md:flex w-1/2 bg-black text-white flex-col justify-center items-center">
                 <h1 className="text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500">
-                    Notes AI
+                    InkMind
                 </h1>
                 <p className="text-gray-400 text-center px-10">
                     Organize your thoughts, boost productivity, and build your future 🚀
