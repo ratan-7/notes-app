@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const API = axios.create({
-    baseURL: "https://notes-app-8w4q.onrender.com/"
+    baseURL: "https://notes-app-8w4q.onrender.com/api"
 })
 
 API.interceptors.request.use((req) => {
