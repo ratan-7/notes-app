@@ -9,7 +9,7 @@ const Signup = () => {
 
     const handleSignup = async () => {
         try {
-            await API.post("signup", { name, email, password })
+            await API.post("/auth/signup", { name, email, password })
             alert("Signup successful")
         } catch {
             alert("Signup failed")
